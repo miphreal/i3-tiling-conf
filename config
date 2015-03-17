@@ -22,6 +22,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+q kill
 bindcode $mod+9 kill
+bindsym --release button2 kill
 
 # start dmenu (a program launcher)
 bindsym $mod+Shift+d exec dmenu_run
@@ -29,10 +30,12 @@ bindsym $mod+F2 exec dmenu_run
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # autorun
-exec --no-startup-id feh --bg-scale ~/.i3/bg.jpg
+exec --no-startup-id feh --bg-scale ~/.config/i3/bg.jpg
+exec --no-startup-id skype
 exec --no-startup-id dunst
 exec --no-startup-id dropbox start -i
-exec --no-startup-id skype
+exec --no-startup-id compton -f
+exec --no-startup-id ibus-daemon
 
 # border sizes
 bindsym $mod+o border normal
@@ -118,7 +121,8 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec i3-msg exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -160,6 +164,8 @@ bar {
 }
 
 # custom bindings
+# - workspaces
+bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'new name: '
 # - screenshoot
 bindsym Print exec gnome-screenshot
 # - lock screen
