@@ -1,6 +1,17 @@
 # ~/.i3/config
 
 set $mod Mod4
+set $w1 1:I
+set $w2 2:II
+set $w3 3:III
+set $w4 4:IV
+set $w5 5:V
+set $w6 6:VI
+set $w7 7:VII
+set $w8 8:VIII
+set $w9 9:IX
+set $w10 10:X
+
 font pango:DejaVu Sans Mono 8
 
 # Layout colors           bord      bg    text 
@@ -93,28 +104,28 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $w1
+bindsym $mod+2 workspace $w2
+bindsym $mod+3 workspace $w3
+bindsym $mod+4 workspace $w4
+bindsym $mod+5 workspace $w5
+bindsym $mod+6 workspace $w6
+bindsym $mod+7 workspace $w7
+bindsym $mod+8 workspace $w8
+bindsym $mod+9 workspace $w9
+bindsym $mod+0 workspace $w10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5
+bindsym $mod+Shift+6 move container to workspace $w6
+bindsym $mod+Shift+7 move container to workspace $w7
+bindsym $mod+Shift+8 move container to workspace $w8
+bindsym $mod+Shift+9 move container to workspace $w9
+bindsym $mod+Shift+0 move container to workspace $w10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -151,6 +162,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+	strip_workspace_numbers yes
 	position top
         colors {
             background #080808 
@@ -166,6 +178,9 @@ bar {
 # custom bindings
 # - workspaces
 bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'new name: '
+bindsym $mod+Shift+braceleft workspace prev
+bindsym $mod+Shift+braceright workspace next
+bindsym $mod+Shift+backslash workspace back_and_forth
 # - screenshoot
 bindsym Print exec gnome-screenshot
 # - lock screen
