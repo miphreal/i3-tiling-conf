@@ -189,6 +189,7 @@ bindsym $mod+Ctrl+l exec i3lock -c 000000
 # windows adjustment
 # helper: find window's name $ xprop |awk '/WM_CLASS/{print $4}'
 for_window [class="Chrome"] border 1pixel
+for_window [class="Git-cola"] floating enable
 for_window [class="Nautilus"] floating enable
 for_window [class="Eog"] floating enable
 for_window [class="Viber"] floating enable
