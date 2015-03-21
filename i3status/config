@@ -1,0 +1,53 @@
+general {
+        colors = true
+        interval = 1
+        color_good = '#568081'
+        color_degraded = '#b58900'
+        color_bad = '#B14D4C'
+}
+
+order += "cpu_usage 0"
+order += "load"
+order += "wireless wlan0"
+order += "ethernet eth0"
+order += "volume master"
+order += "battery 0"
+order += "tztime local"
+
+wireless wlan0 {
+	format_up = "wlan0: %essid %ip"
+	format_down = "no wifi"
+}
+
+ethernet eth0 {
+	 format_up = "eth0: %ip"
+	 format_down = "no lan"
+}
+
+battery 0 {
+        format = "%status %percentage"
+        last_full_capacity = true
+	integer_battery_capacity = true
+        low_threshold = 10
+	path = "/sys/class/power_supply/BAT1/uevent"
+}
+
+cpu_usage {
+	format = "CPU %usage"
+}
+
+volume master {
+       format = "♪ %volume"
+       format_muted = "♪ muted (%volume)"
+       device = "default"
+       mixer = "Master"
+       mixer_idx = 0
+}
+
+tztime local {
+        format = "%d/%m %I:%M %p"
+}
+
+load {
+	format = "%5min"
+}
