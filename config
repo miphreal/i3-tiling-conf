@@ -51,6 +51,7 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -p "me
 exec --no-startup-id rofi -key-run $mod+F2 -key-window $mod+Tab -key-ssh $mod+F3 -levenshtein-sort -fixed-num-lines -location 0 -columns 3 -opacity 100
 
 # autorun
+exec --no-startup-id nm-applet
 exec --no-startup-id feh --bg-scale ~/.config/i3/bg.jpg
 exec --no-startup-id skype
 exec --no-startup-id dunst
