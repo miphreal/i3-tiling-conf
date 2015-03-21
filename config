@@ -47,8 +47,8 @@ bindsym --release button2 kill
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # use rofi
 set $rofi_opts "-levenshtein-sort -fixed-num-lines -location 0 -columns 3 -opacity 100"
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -p "menu:" $rofi_opts' 
-exec --no-startup-id rofi -key-run $mod+F2 -key-window $mod+Tab -key-ssh $mod+F3 -levenshtein-sort -fixed-num-lines -location 0 -columns 3 -opacity 100
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -p "menu:" $rofi_opts -bg \#1A1A1A -fg \#4F4F4F -hlbg \#505050 -hlfg \#BBBBBB' 
+exec --no-startup-id "rofi -key-run $mod+F2 -key-window $mod+Tab -key-ssh $mod+F3 -levenshtein-sort -fixed-num-lines -location 0 -columns 3 -opacity 100 -bg \#1A1A1A -fg \#4F4F4F -hlbg \#505050 -hlfg \#BBBBBB"
 
 # autorun
 exec --no-startup-id nm-applet
