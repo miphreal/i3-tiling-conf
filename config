@@ -39,6 +39,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+q kill
 bindcode $mod+9 kill
+bindsym $mod+Cyrillic_shorti kill
 bindsym --release button2 kill
 
 # start dmenu (a program launcher)
@@ -148,10 +149,10 @@ bindsym $mod+Shift+e exec sh -c '[ $(echo "NO\nYES" | dmenu -sb "#ff6600" -i -p 
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-        bindsym j resize shrink width 10 px or 10ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -178,11 +179,18 @@ bar {
             background #080808 
             statusline #808080
             separator #808080
-            focused_workspace #080808 #222222 #808080
-            active_workspace #080808 #080808 #797979 
+	    #		       border  fg      text
+            #focused_workspace  #080808 #222222 #808080
+            #active_workspace   #080808 #080808 #797979 
+            #inactive_workspace #080808 #080808 #4F4F4F
+            #urgent_workspace   #080808 #080808 #EA4C59
+            focused_workspace  #5B4961 #222222 #AAAAAA
+            active_workspace   #080808 #080808 #797979 
             inactive_workspace #080808 #080808 #4F4F4F
-            urgent_workspace #080808 #080808 #EA4C59
+            urgent_workspace   #080808 #080808 #EA4C59
         }
+	mode hide
+	hidden_state hide
 }
 
 # custom bindings
@@ -208,8 +216,10 @@ bindsym $mod+Print mode "screenshot"
 # - lock screen
 bindsym $mod+Ctrl+l exec i3lock -c 000000
 # - scratchpad
-bindsym %mod+minus move scratchpad
-bindsym %mod+equal scratchpad show
+bindsym $mod+minus move scratchpad
+bindsym $mod+equal scratchpad show
+# - bar
+bindsym $mod+slash bar mode toggle
 
 # windows adjustment
 # helper: find window's name $ xprop |awk '/WM_CLASS/{print $4}'
@@ -228,6 +238,13 @@ for_window [class="Skype"] floating enable, border 1pixel
 for_window [class="Pidgin"] floating enable, border 1pixel
 for_window [class="Firefox"] border 1pixel
 for_window [class="Xfce4-notes"] floating enable, border none
+for_window [class="jetbrains-pycharm"] border none
+
+# move windows to a certain place
+assign [class="chrome"] → $w1
+assign [class="Viber"] → $w5
+assign [class="Skype"] → $w5
+assign [title="PyCharm"] → $w3
 
 # initial workspace applications
 exec --no-startup-id i3-msg "workspace $w2; exec i3-sensible-terminal; workspace $w1; exec google-chrome"
