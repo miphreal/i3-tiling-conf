@@ -208,8 +208,13 @@ bindsym $mod+Print mode "screenshot"
 # - lock screen
 bindsym $mod+Ctrl+l exec i3lock -c 000000
 # - scratchpad
-bindsym %mod+minus move scratchpad
-bindsym %mod+equal scratchpad show
+bindsym $mod+minus move scratchpad
+bindsym $mod+equal scratchpad show
+# - sound
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
+bindsym $mod+Shift+minus     exec amixer -D pulse sset Master 5%-
+bindsym $mod+Shift+plus      exec amixer -D pulse sset Master 5%+
 
 # windows adjustment
 # helper: find window's name $ xprop |awk '/WM_CLASS/{print $4}'
