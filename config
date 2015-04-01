@@ -220,6 +220,11 @@ bindsym $mod+minus move scratchpad
 bindsym $mod+equal scratchpad show
 # - bar
 bindsym $mod+slash bar mode toggle
+# - sound
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
+bindsym $mod+Shift+minus     exec amixer -D pulse sset Master 5%-
+bindsym $mod+Shift+plus      exec amixer -D pulse sset Master 5%+
 
 # windows adjustment
 # helper: find window's name $ xprop |awk '/WM_CLASS/{print $4}'
