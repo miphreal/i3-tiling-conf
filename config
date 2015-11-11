@@ -62,6 +62,7 @@ exec --no-startup-id dunst
 exec --no-startup-id dropbox start -i
 exec --no-startup-id compton -f
 exec --no-startup-id ibus-daemon
+exec --no-startup-id $HOME/.local/bin/btsync --config $HOME/.local/opt/btsync-versions/btsync-2.2.2/config.json --log $HOME/.local/var/log/btsync-2.2.2.log --nodaemon
 
 # border sizes
 bindsym $mod+o border normal
@@ -206,8 +207,9 @@ bindsym $mod+Shift+backslash workspace back_and_forth
 # - screenshot
 bindsym Print exec gnome-screenshot -i
 bindsym $mod+Shift+Print exec "gnome-screenshot -a"; focus
+bindsym $mod+Shift+i     exec $HOME/.local/bin/imgur-screenshot.sh -l
 mode "screenshot" {
-     bindsym i exec gnome-screenshot -i
+     bindsym i exec $HOME/.local/bin/imgur-screenshot.sh -l 
      bindsym w exec gnome-screenshot -w && notify-send -a gnome-screenshot 'window screenshot done'
      bindsym a exec gnome-screenshot -a && notify-send -a gnome-screenshot 'area screenshot done'
      bindsym s exec gnome-screenshot && notify-send -a gnome-screenshot 'screenshot done'
@@ -248,6 +250,7 @@ for_window [class="Pidgin"] floating enable, border 1pixel
 for_window [class="Firefox"] border 1pixel
 for_window [class="Xfce4-notes"] floating enable, border none
 for_window [class="jetbrains-pycharm"] border none
+for_window [class="Emacs24"] floating enable, border 1pixel
 
 # move windows to a certain place
 assign [class="chrome"] → $w1
