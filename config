@@ -15,7 +15,7 @@ set $w10 10:X
 
 set $font DejaVu Sans Mono
 
-set $file_mgr nautilus
+set $file_mgr nautilus --no-desktop
 
 
 font pango:$font 8
@@ -238,8 +238,9 @@ bindsym $mod+Shift+plus      exec amixer -D pulse sset Master 5%+
 # helper: find window's name $ xprop |awk '/WM_CLASS/{print $4}'
 for_window [class="Chrome"] border 1pixel
 for_window [class="^Google-chrome"] border none
+for_window [class="^google-chrome-unstable"] border none
 for_window [class="Git-cola"] floating enable
-for_window [class="Nautilus"] floating enable
+for_window [class="Nautilus"] floating enable, border 1pixel
 for_window [class="Gnome-screenshot"] floating enable
 for_window [class="Gnome-terminal"] border 1pixel
 for_window [class="Eog"] floating enable
@@ -256,6 +257,7 @@ for_window [class="Emacs24"] floating enable, border 1pixel
 
 # move windows to a certain place
 assign [class="chrome"] → $w1
+assign [class="google-chrome-unstable"] → $w1
 assign [class="Viber"] → $w5
 assign [class="Skype"] → $w5
 assign [title="PyCharm"] → $w3
