@@ -59,6 +59,7 @@ exec --no-startup-id dunst
 exec --no-startup-id dropbox start -i
 exec --no-startup-id compton -f
 exec --no-startup-id ibus-daemon
+exec --no-startup-id /opt/viber/Viber
 
 # border sizes
 bindsym $mod+o border normal
@@ -169,6 +170,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+bindsym $mod+space exec $HOME/.local/bin/switchkb.sh
+
 # Starut i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -190,8 +193,8 @@ bar {
             inactive_workspace #080808 #080808 #4F4F4F
             urgent_workspace   #080808 #080808 #EA4C59
         }
-	mode hide
-	hidden_state hide
+	mode dock
+	hidden_state hide  
 }
 
 # custom bindings
@@ -203,8 +206,9 @@ bindsym $mod+Shift+backslash workspace back_and_forth
 # - screenshot
 bindsym Print exec gnome-screenshot -i
 bindsym $mod+Shift+Print exec "gnome-screenshot -a"; focus
+bindsym $mod+Shift+i exec $HOME/.local/bin/imgur-screenshot.sh
 mode "screenshot" {
-     bindsym i exec gnome-screenshot -i
+     bindsym i exec $HOME/.local/bin/imgur-screenshot.sh
      bindsym w exec gnome-screenshot -w && notify-send -a gnome-screenshot 'window screenshot done'
      bindsym a exec gnome-screenshot -a && notify-send -a gnome-screenshot 'area screenshot done'
      bindsym s exec gnome-screenshot && notify-send -a gnome-screenshot 'screenshot done'
@@ -253,4 +257,4 @@ assign [class="Skype"] → $w5
 assign [title="PyCharm"] → $w3
 
 # initial workspace applications
-exec --no-startup-id i3-msg "workspace $w2; exec i3-sensible-terminal; workspace $w1; exec google-chrome"
+exec --no-startup-id i3-msg "workspace $w2; exec i3-sensible-terminal; workspace $w1; exec google-chrome-unstable"
