@@ -62,7 +62,6 @@ exec --no-startup-id dunst
 exec --no-startup-id dropbox start -i
 exec --no-startup-id compton -f
 exec --no-startup-id ibus-daemon
-exec --no-startup-id /opt/viber/Viber
 
 # border sizes
 bindsym $mod+o border normal
@@ -168,7 +167,7 @@ mode "resize" {
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
-	bindsym r      mode "default"
+    bindsym r      mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -178,15 +177,15 @@ bindsym $mod+space exec $HOME/.local/bin/switchkb.sh
 # Starut i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
-	strip_workspace_numbers yes
-	font pango:$font, Icons 8
-	position top
+    status_command ~/.config/i3/statusbar/i3pystatus.pex ~/.config/i3/statusbar/bar.py
+    strip_workspace_numbers yes
+    font pango:$font, Icons 8
+    position top
         colors {
             background #080808 
             statusline #808080
             separator #808080
-	    #		       border  fg      text
+            #               border  fg      text
             #focused_workspace  #080808 #222222 #808080
             #active_workspace   #080808 #080808 #797979 
             #inactive_workspace #080808 #080808 #4F4F4F
@@ -196,8 +195,8 @@ bar {
             inactive_workspace #080808 #080808 #4F4F4F
             urgent_workspace   #080808 #080808 #EA4C59
         }
-	mode dock
-	hidden_state hide  
+    mode dock
+    hidden_state hide  
 }
 
 # custom bindings
@@ -241,10 +240,12 @@ for_window [class="^Google-chrome"] border none
 for_window [class="^google-chrome-unstable"] border none
 for_window [class="Git-cola"] floating enable
 for_window [class="Nautilus"] floating enable, border 1pixel
+for_window [class="google-chrome"] border none
 for_window [class="Gnome-screenshot"] floating enable
 for_window [class="Gnome-terminal"] border none
 for_window [class="Eog"] floating enable
 for_window [class="Viber"] floating enable
+for_window [title="Viber — +375295665691"] floating enable
 for_window [class="Wine"] floating enable, border 1pixel
 for_window [class="Xfce4-notifyd"] floatrng enable, border 1pixel
 for_window [class="Thunar"] floating enable, border 1pixel
@@ -254,13 +255,16 @@ for_window [class="Firefox"] border 1pixel
 for_window [class="Xfce4-notes"] floating enable, border none
 for_window [class="jetbrains-pycharm"] border none
 for_window [class="Emacs24"] floating enable, border 1pixel
+for_window [class="Sublime_text"] floating enable, border 1pixel
 
 # move windows to a certain place
 assign [class="chrome"] → $w1
 assign [class="google-chrome-unstable"] → $w1
 assign [class="Viber"] → $w5
+assign [title="Viber — +375295665691"] → $w5
 assign [class="Skype"] → $w5
 assign [title="PyCharm"] → $w3
 
 # initial workspace applications
-exec --no-startup-id i3-msg "workspace $w2; exec i3-sensible-terminal; workspace $w1; exec google-chrome-unstable"
+exec --no-startup-id i3-msg "workspace $w2; exec i3-sensible-terminal; workspace $w1; exec google-chrome-stable"
+
