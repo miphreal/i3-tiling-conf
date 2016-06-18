@@ -13,7 +13,7 @@ set $w8 8:VIII
 set $w9 9:IX
 set $w10 10:X
 
-set $font DejaVu Sans Mono
+set $font FontAwesome
 
 set $file_mgr nautilus --no-desktop
 

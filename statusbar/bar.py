@@ -1,15 +1,16 @@
 from i3pystatus import Status
 
 #
-# pex https://github.com/enkore/i3pystatus/archive/master.zip netifaces colour psutil -o i3pystatus.pex
+# pex https:as//github.com/enkore/i3pystatus/archive/master.zip netifaces colour psutil -o i3pystatus.pex
+# install fontawesome
 
 status = Status()
 
 status.register(
     'keyboard_locks',
     format='{caps}',
-    caps_on='UPPER',
-    caps_off='lower')
+    caps_on='\uf102',
+    caps_off='')
 
 status.register(
     'xkblayout',
@@ -20,17 +21,17 @@ status.register(
 status.register(
     'pulseaudio',
     on_middleclick='switch_mute',
-    format='♪{volume}',
+    format='\uf027{volume}',
     format_muted='🔇{volume}')
 
 status.register(
     'clock', 
-    format='%d/%m', 
+    format='\uf073 %d/%m', 
     color='#4da6ff')
 status.register(
     'clock', 
     hints = {'separator': False, 'separator_block_width': 4},
-    format='⌚ %H:%M', 
+    format='\uf017 %H:%M', 
     color='#99ccff')
 
 status.register(
@@ -66,7 +67,8 @@ status.register(
     color='#9292b9')
 
 status.register(
-    'lastfm',
+    'lastfm',    
+    playing_format='\uf001 {artist} - {track}',
     playing_color='#ff661a',
     apikey='f352ee77209490e00c4c11d3cc122f9c',
     user='MiphAdler')
