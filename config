@@ -232,6 +232,9 @@ bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
 bindsym $mod+Shift+minus     exec amixer -D pulse sset Master 5%-
 bindsym $mod+Shift+plus      exec amixer -D pulse sset Master 5%+
+bindsym --release $mod+p            exec --no-startup-id xdotool key --clearmodifiers XF86AudioPlay
+bindsym --release $mod+bracketleft  exec --no-startup-id xdotool key --clearmodifiers XF86AudioPrev
+bindsym --release $mod+bracketright exec --no-startup-id xdotool key --clearmodifiers XF86AudioNext
 
 # windows adjustment
 # helper: find window's name $ xprop |awk '/WM_CLASS/{print $4}'
